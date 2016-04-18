@@ -16,6 +16,7 @@
 #define MAX_PORT 4                  // Maximum number of port value that is supported (By LPC)
 #define MAX_PIN 9                   // Maximum number of pin value that is supported (By LPC) NOTE: <-- should be changed to 11?
 
+#define HIGH 1                      // Value of a pin set to HIGH
 
 //! @author Ferdi Stoeltie 1665045
 //! @brief Function provides an easy way to configure a given pin as input
@@ -43,12 +44,31 @@ void pin_configure_as_output(int port, int pin);
 //!             it will set PIN_SET_ERROR bit in PIN_CONFIGURATION_ERROR
 void pin_set(int port, int pin, unsigned char val);
 
+//! @author Ferdi Stoeltie 1665045
+//! @brief Gets the value of the selected pin and returns whether the pin is HIGH or LOW
+//! @param port The port number (for current LPC, ranging from 1..4)
+//! @param pin The pin to configure as output
+//! @return value of the pin in 1 (HIGH) and 0 (LOW)
+//! @warning If a port/pin configuration is given that is invalid, 
+//!             it will set PIN_SET_ERROR bit in PIN_GET_ERROR
 unsigned char pin_get(int port, int pin);
 
+//! @author Ferdi Stoeltie 1665045
+//! @brief helper method for redundant code.
+//! @param port The port number (for current LPC, ranging from 1..4)
+//! @param pin The pin to configure as output
+//! @return True or False in 1 and 0. If the port and pin configuration does not exist, returns False
 static unsigned char is_valid_config(int port, int pin, int error);
 
+//! @author Ferdi Stoeltie 1665045
+//! @brief helper method for redundant and readible code.
+//! @param port The port number (for current LPC, ranging from 1..4)
+//! @return LPC_GPIO_TypeDef* a pointer to the correct data structure for easy and fast access.
 static LPC_GPIO_TypeDef* get_gpio(int port);
+
+// temp test method TO BE REMOVED!
 int get_countdown();
 
+//! @brief Contains all error bits that are set
 int PIN_CONFIGURATION_ERROR;
 #endif // PIN_CONFIGURE
