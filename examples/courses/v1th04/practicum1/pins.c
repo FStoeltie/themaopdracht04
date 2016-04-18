@@ -63,5 +63,5 @@ static LPC_GPIO_TypeDef* get_gpio(int port) {
 }
 
 int get_countdown(){
-    return 800000;
+    return 40000;
 }

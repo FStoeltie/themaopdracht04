@@ -1,6 +1,6 @@
 //! @file pins.h
 //! @author Ferdi Stoeltie 1665045
-//! @date 18-04-2016
+//! @date 19-04-2016
 //! @brief 
 
 #ifndef PIN_CONFIGURE

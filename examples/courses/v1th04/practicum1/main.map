@@ -79,7 +79,7 @@ END GROUP
                 [0x00001000]                PROVIDE (__ram_size, __ram_size)
                 [0x10001000]                PROVIDE (__ram_end, __ram_end)
 
-.text           0x00000000      0x148
+.text           0x00000000      0x230
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                __text_start = .
                 [0x00000000]                PROVIDE (__text_start, __text_start)
@@ -97,41 +97,44 @@ END GROUP
  .text.get_countdown
                 0x000000a4        0x8 pins.o
                 0x000000a4                get_countdown
+ .text.disable_others
+                0x000000ac       0x3e main.o
+                0x000000ac                disable_others
  .text.startup.main
-                0x000000ac       0x46 main.o
-                0x000000ac                main
- *fill*         0x000000f2        0x2 
+                0x000000ea       0xf0 main.o
+                0x000000ea                main
+ *fill*         0x000001da        0x2 
  .text.__startup
-                0x000000f4       0x54 bmptk_cortex.o
-                0x000000f4                __startup
-                0x00000148                . = ALIGN (0x4)
+                0x000001dc       0x54 bmptk_cortex.o
+                0x000001dc                __startup
+                0x00000230                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  .glue_7t       0x00000000        0x0 linker stubs
-                0x00000148                . = ALIGN (0x4)
+                0x00000230                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
-                0x00000148                . = ALIGN (0x4)
+                0x00000230                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000148                . = ALIGN (0x4)
+                0x00000230                . = ALIGN (0x4)
  *(.gcc_except_table)
-                0x00000148                . = ALIGN (0x4)
+                0x00000230                . = ALIGN (0x4)
  *(.eh_frame_hdr)
-                0x00000148                . = ALIGN (0x4)
+                0x00000230                . = ALIGN (0x4)
  *(.eh_frame)
-                0x00000148                . = ALIGN (0x4)
-                0x00000148                __text_end = .
-                [0x00000148]                PROVIDE (__text_end, __text_end)
+                0x00000230                . = ALIGN (0x4)
+                0x00000230                __text_end = .
+                [0x00000230]                PROVIDE (__text_end, __text_end)
 
-.vfp11_veneer   0x00000148        0x0
+.vfp11_veneer   0x00000230        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00000148        0x0
+.v4_bx          0x00000230        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00000148        0x0
+.iplt           0x00000230        0x0
  .iplt          0x00000000        0x0 pins.o
 
-.rel.dyn        0x00000148        0x0
+.rel.dyn        0x00000230        0x0
  .rel.iplt      0x00000000        0x0 pins.o
 
 .IF_YOU_SEE_THIS_YOU_HAVE_ONE_OR_MORE_GLOBAL_OBJECT_CONSTRUCTORS
@@ -139,20 +142,20 @@ END GROUP
  *(.preinit_array)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x00000148                . = ALIGN (0x4)
-                0x00000148                __exidx_start = .
-                [0x00000148]                PROVIDE (__exidx_start, __exidx_start)
+                0x00000230                . = ALIGN (0x4)
+                0x00000230                __exidx_start = .
+                [0x00000230]                PROVIDE (__exidx_start, __exidx_start)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000148                . = ALIGN (0x4)
-                0x00000148                __exidx_end = .
-                [0x00000148]                PROVIDE (__exidx_end, __exidx_end)
+                0x00000230                . = ALIGN (0x4)
+                0x00000230                __exidx_end = .
+                [0x00000230]                PROVIDE (__exidx_end, __exidx_end)
 
-.data           0x10000000        0x0 load address 0x00000148
+.data           0x10000000        0x0 load address 0x00000230
                 0x10000000                . = ALIGN (0x4)
-                0x00000148                __data_init_start = LOADADDR (.data)
-                [0x00000148]                PROVIDE (__data_init_start, __data_init_start)
+                0x00000230                __data_init_start = LOADADDR (.data)
+                [0x00000230]                PROVIDE (__data_init_start, __data_init_start)
                 0x10000000                __data_start = .
                 [0x10000000]                PROVIDE (__data_start, __data_start)
                 0x10000000                . = ALIGN (0x4)
@@ -160,10 +163,10 @@ END GROUP
                 0x10000000                . = ALIGN (0x4)
                 0x10000000                __data_end = .
                 [0x10000000]                PROVIDE (__data_end, __data_end)
-                0x00000148                __data_init_end = LOADADDR (.data)
-                [0x00000148]                PROVIDE (__data_init_end, __data_init_end)
+                0x00000230                __data_init_end = LOADADDR (.data)
+                [0x00000230]                PROVIDE (__data_init_end, __data_init_end)
 
-.igot.plt       0x10000000        0x0 load address 0x00000148
+.igot.plt       0x10000000        0x0 load address 0x00000230
  .igot.plt      0x00000000        0x0 pins.o
 
 .bss            0x10000000        0x4
@@ -287,7 +290,7 @@ END GROUP
 
 /DISCARD/
  *(.note.GNU-stack)
-                0x00000148                PROVIDE (__text_size, (__text_end - __text_start))
+                0x00000230                PROVIDE (__text_size, (__text_end - __text_start))
                 0x00000000                PROVIDE (__exidx_size, (__exidx_end - __exidx_start))
                 0x00000000                PROVIDE (__data_size, (__data_end - __data_start))
                 0x00000000                PROVIDE (__data_init_size, (__data_init_end - __data_init_start))
