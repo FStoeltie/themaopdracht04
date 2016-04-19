@@ -55,41 +55,31 @@ int main( void ){
    int current_led = 0;
    // loop forever
    while( 1 ){
+       #define count_down 40000
             for(current_led = 4; current_led < 8; current_led++)    {
-                for( i = 0; i < get_countdown(); i++ ){ 
+                for( i = 0; i < count_down; i++ ){ 
                 }
                 disable_others();
                     pin_set(0, current_led, 1);
-                for( i = 0; i < get_countdown(); i++ ){
+                for( i = 0; i < count_down; i++ ){
                 }
             }
             
             for(current_led = 4; current_led < 6; current_led++)    {
-                for( i = 0; i < get_countdown(); i++ ){ 
+                for( i = 0; i < count_down; i++ ){ 
                 }
                 disable_others();
                     pin_set(1, current_led, 1);
-                for( i = 0; i < get_countdown(); i++ ){
+                for( i = 0; i < count_down; i++ ){
                 }
             }
             for(current_led = 8; current_led < 10; current_led++)    {
-                for( i = 0; i < get_countdown(); i++ ){ 
+                for( i = 0; i < count_down; i++ ){ 
                 }
                 disable_others();
                     pin_set(1, current_led, 1);
-                for( i = 0; i < get_countdown(); i++ ){
+                for( i = 0; i < count_down; i++ ){
                 }
             }
-            // make PIO1_4 high
-            //LPC_GPIO1->DATA = LPC_GPIO1->DATA | 0x10;
-            //pin_set(1, 4, 1);
-            // wait 
-
-            
-            // make PIO1_4 low
-            //LPC_GPIO1->DATA = LPC_GPIO1->DATA & ~ 0x10;
-            //pin_set(1, 4, 0);
-            // wait 
-
 	}     
 }

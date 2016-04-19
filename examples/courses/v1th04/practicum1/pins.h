@@ -66,9 +66,6 @@ static unsigned char is_valid_config(int port, int pin, int error);
 //! @return LPC_GPIO_TypeDef* a pointer to the correct data structure for easy and fast access.
 static LPC_GPIO_TypeDef* get_gpio(int port);
 
-// temp test method TO BE REMOVED!
-int get_countdown();
-
 //! @brief Contains all error bits that are set
 int PIN_CONFIGURATION_ERROR;
 #endif // PIN_CONFIGURE

@@ -61,7 +61,3 @@ static LPC_GPIO_TypeDef* get_gpio(int port) {
     LPC_GPIO_TypeDef* LPC_selected = ((LPC_GPIO_TypeDef   *) (LPC_AHB_BASE  + port_number) );
     return LPC_selected;
 }
-
-int get_countdown(){
-    return 40000;
-}
