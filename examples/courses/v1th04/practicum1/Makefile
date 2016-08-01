@@ -15,8 +15,9 @@ TARGET     := lpc1114fn28
 BMPTK      := ../../../..
 
 # Specify project files (other than $(PROJECT).cpp) (if any)
-SOURCES    := pins.c routines.c
-HEADERS    := pins.h routines.h
+SOURCES    := pins.c routines.c sw-uart.c timer.c servo.c
+HEADERS    := pins.h routines.h sw-uart.h timer.h servo.h
 
+SEARCH     := ../../../../library
 # The Makefile.inc does all the work
 include $(BMPTK)/Makefile.inc

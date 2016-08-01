@@ -41,6 +41,7 @@ unsigned char pin_get(int port, int pin){
         return;   
     }
     // Return value of pin, where 1 is HIGH and 0 is LOW
+    //return (  get_gpio(port)->DATA & ( HIGH << pin ) );
     return (  get_gpio(port)->DATA & ( HIGH << pin ) ) == 0;
 }
 

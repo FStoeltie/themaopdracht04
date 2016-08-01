@@ -20,6 +20,8 @@
 // includes the cmsis definitions for the LPC1114
 #include "bmptk.h"
 #include "pins.h"	
+#include "servo.h"
+#include "timer.h"
 void disable_others()  {
     int prep_port, prep_pin;
     for(prep_pin = 4; prep_pin < 8; prep_pin++)  {
@@ -32,21 +34,20 @@ void disable_others()  {
     pin_set(1, 8, 0);
     pin_set(1, 9, 0);
    
-}		
-int main( void ){	
-
-   // must be volatile to prevent optimization of the wait loops
+}
+void week1()    {
+    // must be volatile to prevent optimization of the wait loops
    volatile int i;
    
    // make PIO1_4 an output
    //LPC_GPIO1->DIR = LPC_GPIO1->DIR | 0x10; 
    int prep_port = 0, prep_pin;
 
-    for(prep_pin = 4; prep_pin < 8; prep_pin++)  {
+   for(prep_pin = 4; prep_pin < 8; prep_pin++)  {
         //if(prep_pin > 4)
         //    prep_port = 1;
         pin_configure_as_output(prep_port, prep_pin);
-    }
+   }
    pin_configure_as_output(1, 4);
    pin_configure_as_output(1, 5);
    pin_configure_as_output(1, 8);
@@ -82,4 +83,33 @@ int main( void ){
                 }
             }
 	}     
+}		
+void week2_servo()  {
+    
+}
+int main( void ){	
+    unsigned int n;
+    servo_init(1, 5);
+    timer_init();
+
+    for(;;){
+            for(n = 600; n < 2200; n = n + 10)  {
+            servo_pulse(1, 5, n);
+            //servo_pulse( 1, 5, 2500 );
+            await(now() + 50 * 700);
+        }
+        
+        
+       /* await( now() + 50 * 1000 );
+        servo_pulse( 1, 4, 1000 );
+        await( now() + 50 * 1000 );
+        servo_pulse( 1, 4, 1500 );
+        await( now() + 50 * 1000 );*/
+       /* for( n = 500; n < 2500; n = n + 10 ){
+            servo_pulse( 1, 4, 500 );
+            await( now() + 50 * 1000 );
+        }   */       
+    }
+
+   
 }

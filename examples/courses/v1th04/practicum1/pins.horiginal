@@ -6,17 +6,20 @@
 #ifndef PIN_CONFIGURE
 #define PIN_CONFIGURE
 #include "bmptk.h"
-#include "routines.h"
 
-#define PIN_INPUT_ERROR     0x01    // Error value for configuring pin as input
-#define PIN_OUTPUT_ERROR    0x02    // Error value for configuring pin as output
-#define PIN_SET_ERROR       0x04    // Error value for setting pin to either HIGH or LOW
-#define PIN_GET_ERROR       0x08    // Error value for reading pin wheather pin is HIGH or LOW
+const unsigned int PIN_INPUT_ERROR  =   0x01;    // Error value for configuring pin as input
+const unsigned int PIN_OUTPUT_ERROR =   0x02;    // Error value for configuring pin as output
+const unsigned int PIN_SET_ERROR    =   0x04;    // Error value for setting pin to either HIGH or LOW
+const unsigned int PIN_GET_ERROR    =   0x08;    // Error value for reading pin wheather pin is HIGH or LOW
 
-#define MAX_PORT 4                  // Maximum number of port value that is supported (By LPC)
-#define MAX_PIN 9                   // Maximum number of pin value that is supported (By LPC) NOTE: <-- should be changed to 11?
+//! @brief Contains all error bits that are set
+unsigned int PIN_CONFIGURATION_ERROR = 0x00;
 
-#define HIGH 1                      // Value of a pin set to HIGH
+#define MAX_PORT    4               // Maximum number of port value that is supported (By LPC)
+#define MAX_PIN     9               // Maximum number of pin value that is supported (By LPC) NOTE: <-- should be changed to 11?
+
+#define HIGH    1                   // Value of a pin set to HIGH
+#define LOW     0                   // Value of a pin set to LOW
 
 //! @author Ferdi Stoeltie 1665045
 //! @brief Function provides an easy way to configure a given pin as input
@@ -66,6 +69,5 @@ static unsigned char is_valid_config(int port, int pin, int error);
 //! @return LPC_GPIO_TypeDef* a pointer to the correct data structure for easy and fast access.
 static LPC_GPIO_TypeDef* get_gpio(int port);
 
-//! @brief Contains all error bits that are set
-int PIN_CONFIGURATION_ERROR;
+
 #endif // PIN_CONFIGURE

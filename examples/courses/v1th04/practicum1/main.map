@@ -1,3 +1,7 @@
+Archive member included because of file (symbol)
+
+c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
+                              sw-uart.o (__aeabi_idiv)
 
 Allocating common symbols
 Common symbol       size              file
@@ -17,9 +21,47 @@ Discarded input sections
  .text          0x00000000        0x0 routines.o
  .data          0x00000000        0x0 routines.o
  .bss           0x00000000        0x0 routines.o
+ .text          0x00000000        0x0 sw-uart.o
+ .data          0x00000000        0x0 sw-uart.o
+ .bss           0x00000000        0x0 sw-uart.o
+ .text.txd_low  0x00000000       0x18 sw-uart.o
+ .text.txd_high
+                0x00000000       0x18 sw-uart.o
+ .text.uart_init
+                0x00000000       0x1c sw-uart.o
+ .text.uart_put_char
+                0x00000000       0x48 sw-uart.o
+ .text.uart_put_string
+                0x00000000       0x14 sw-uart.o
+ .text.uart_put_int_decimal
+                0x00000000       0x4c sw-uart.o
+ .text.uart_put_int_hexadecimal_digit
+                0x00000000       0x16 sw-uart.o
+ .text.uart_put_int_hexadecimal
+                0x00000000       0x1c sw-uart.o
+ .rodata.str1.1
+                0x00000000        0xc sw-uart.o
+ .rodata.bmptk_version
+                0x00000000        0xe sw-uart.o
+ .text          0x00000000        0x0 timer.o
+ .data          0x00000000        0x0 timer.o
+ .bss           0x00000000        0x0 timer.o
+ .text.delay    0x00000000       0x14 timer.o
+ .rodata.bmptk_version
+                0x00000000        0xe timer.o
+ .text          0x00000000        0x0 servo.o
+ .data          0x00000000        0x0 servo.o
+ .bss           0x00000000        0x0 servo.o
+ .rodata.bmptk_version
+                0x00000000        0xe servo.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text.disable_others
+                0x00000000       0x3e main.o
+ .text.week1    0x00000000       0xe0 main.o
+ .text.week2_servo
+                0x00000000        0x2 main.o
  .rodata.bmptk_version
                 0x00000000        0xe main.o
  .text          0x00000000        0x0 bmptk_cortex.o
@@ -41,6 +83,9 @@ Discarded input sections
                 0x00000000        0xe bmptk_interface.o
  .data._first_free
                 0x00000000        0x4 bmptk_interface.o
+ .text          0x00000000       0xc0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
 
 Memory Configuration
 
@@ -54,6 +99,9 @@ Linker script and memory map
 
 LOAD pins.o
 LOAD routines.o
+LOAD sw-uart.o
+LOAD timer.o
+LOAD servo.o
 LOAD main.o
 LOAD bmptk_cortex.o
 LOAD bmptk_interface.o
@@ -79,7 +127,7 @@ END GROUP
                 [0x00001000]                PROVIDE (__ram_size, __ram_size)
                 [0x10001000]                PROVIDE (__ram_end, __ram_end)
 
-.text           0x00000000      0x218
+.text           0x00000000      0x1b4
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                __text_start = .
                 [0x00000000]                PROVIDE (__text_start, __text_start)
@@ -94,44 +142,54 @@ END GROUP
                 0x00000020                pin_configure_as_output
  .text.pin_set  0x00000054       0x50 pins.o
                 0x00000054                pin_set
- .text.disable_others
-                0x000000a4       0x3e main.o
-                0x000000a4                disable_others
- *fill*         0x000000e2        0x2 
+ .text.timer_init
+                0x000000a4       0x28 timer.o
+                0x000000a4                timer_init
+ .text.now      0x000000cc        0xc timer.o
+                0x000000cc                now
+ .text.await    0x000000d8       0x10 timer.o
+                0x000000d8                await
+ .text.servo_init
+                0x000000e8       0x16 servo.o
+                0x000000e8                servo_init
+ .text.servo_pulse
+                0x000000fe       0x24 servo.o
+                0x000000fe                servo_pulse
+ *fill*         0x00000122        0x2 
  .text.startup.main
-                0x000000e4       0xe0 main.o
-                0x000000e4                main
+                0x00000124       0x3c main.o
+                0x00000124                main
  .text.__startup
-                0x000001c4       0x54 bmptk_cortex.o
-                0x000001c4                __startup
-                0x00000218                . = ALIGN (0x4)
+                0x00000160       0x54 bmptk_cortex.o
+                0x00000160                __startup
+                0x000001b4                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  .glue_7t       0x00000000        0x0 linker stubs
-                0x00000218                . = ALIGN (0x4)
+                0x000001b4                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
-                0x00000218                . = ALIGN (0x4)
+                0x000001b4                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000218                . = ALIGN (0x4)
+                0x000001b4                . = ALIGN (0x4)
  *(.gcc_except_table)
-                0x00000218                . = ALIGN (0x4)
+                0x000001b4                . = ALIGN (0x4)
  *(.eh_frame_hdr)
-                0x00000218                . = ALIGN (0x4)
+                0x000001b4                . = ALIGN (0x4)
  *(.eh_frame)
-                0x00000218                . = ALIGN (0x4)
-                0x00000218                __text_end = .
-                [0x00000218]                PROVIDE (__text_end, __text_end)
+                0x000001b4                . = ALIGN (0x4)
+                0x000001b4                __text_end = .
+                [0x000001b4]                PROVIDE (__text_end, __text_end)
 
-.vfp11_veneer   0x00000218        0x0
+.vfp11_veneer   0x000001b4        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00000218        0x0
+.v4_bx          0x000001b4        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00000218        0x0
+.iplt           0x000001b4        0x0
  .iplt          0x00000000        0x0 pins.o
 
-.rel.dyn        0x00000218        0x0
+.rel.dyn        0x000001b4        0x0
  .rel.iplt      0x00000000        0x0 pins.o
 
 .IF_YOU_SEE_THIS_YOU_HAVE_ONE_OR_MORE_GLOBAL_OBJECT_CONSTRUCTORS
@@ -139,20 +197,20 @@ END GROUP
  *(.preinit_array)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x00000218                . = ALIGN (0x4)
-                0x00000218                __exidx_start = .
-                [0x00000218]                PROVIDE (__exidx_start, __exidx_start)
+                0x000001b4                . = ALIGN (0x4)
+                0x000001b4                __exidx_start = .
+                [0x000001b4]                PROVIDE (__exidx_start, __exidx_start)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000218                . = ALIGN (0x4)
-                0x00000218                __exidx_end = .
-                [0x00000218]                PROVIDE (__exidx_end, __exidx_end)
+                0x000001b4                . = ALIGN (0x4)
+                0x000001b4                __exidx_end = .
+                [0x000001b4]                PROVIDE (__exidx_end, __exidx_end)
 
-.data           0x10000000        0x0 load address 0x00000218
+.data           0x10000000        0x0 load address 0x000001b4
                 0x10000000                . = ALIGN (0x4)
-                0x00000218                __data_init_start = LOADADDR (.data)
-                [0x00000218]                PROVIDE (__data_init_start, __data_init_start)
+                0x000001b4                __data_init_start = LOADADDR (.data)
+                [0x000001b4]                PROVIDE (__data_init_start, __data_init_start)
                 0x10000000                __data_start = .
                 [0x10000000]                PROVIDE (__data_start, __data_start)
                 0x10000000                . = ALIGN (0x4)
@@ -160,10 +218,10 @@ END GROUP
                 0x10000000                . = ALIGN (0x4)
                 0x10000000                __data_end = .
                 [0x10000000]                PROVIDE (__data_end, __data_end)
-                0x00000218                __data_init_end = LOADADDR (.data)
-                [0x00000218]                PROVIDE (__data_init_end, __data_init_end)
+                0x000001b4                __data_init_end = LOADADDR (.data)
+                [0x000001b4]                PROVIDE (__data_init_end, __data_init_end)
 
-.igot.plt       0x10000000        0x0 load address 0x00000218
+.igot.plt       0x10000000        0x0 load address 0x000001b4
  .igot.plt      0x00000000        0x0 pins.o
 
 .bss            0x10000000        0x4
@@ -244,8 +302,20 @@ END GROUP
 .debug_line
  *(.debug_line)
 
-.debug_frame
+.debug_frame    0x00000000       0x20
  *(.debug_frame)
+ .debug_frame   0x00000000       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
+
+.comment        0x00000000       0x70
+ .comment       0x00000000       0x70 pins.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 routines.o
+ .comment       0x00000000       0x71 sw-uart.o
+ .comment       0x00000000       0x71 timer.o
+ .comment       0x00000000       0x71 servo.o
+ .comment       0x00000000       0x71 main.o
+ .comment       0x00000000       0x71 bmptk_cortex.o
+ .comment       0x00000000       0x71 bmptk_interface.o
 
 .debug_str
  *(.debug_str)
@@ -279,15 +349,23 @@ END GROUP
  .ARM.attributes
                 0x00000031       0x31 routines.o
  .ARM.attributes
-                0x00000062       0x31 main.o
+                0x00000062       0x31 sw-uart.o
  .ARM.attributes
-                0x00000093       0x31 bmptk_cortex.o
+                0x00000093       0x31 timer.o
  .ARM.attributes
-                0x000000c4       0x31 bmptk_interface.o
+                0x000000c4       0x31 servo.o
+ .ARM.attributes
+                0x000000f5       0x31 main.o
+ .ARM.attributes
+                0x00000126       0x31 bmptk_cortex.o
+ .ARM.attributes
+                0x00000157       0x31 bmptk_interface.o
+ .ARM.attributes
+                0x00000188       0x1e c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
 
 /DISCARD/
  *(.note.GNU-stack)
-                0x00000218                PROVIDE (__text_size, (__text_end - __text_start))
+                0x000001b4                PROVIDE (__text_size, (__text_end - __text_start))
                 0x00000000                PROVIDE (__exidx_size, (__exidx_end - __exidx_start))
                 0x00000000                PROVIDE (__data_size, (__data_end - __data_start))
                 0x00000000                PROVIDE (__data_init_size, (__data_init_end - __data_init_start))
@@ -295,11 +373,3 @@ END GROUP
                 0x00000400                PROVIDE (__stack_size, (__stack_end - __stack_start))
                 0x00000bf8                PROVIDE (__heap_size, (__heap_end - __heap_start))
 OUTPUT(main.elf elf32-littlearm)
-
-.comment        0x00000000       0x70
- .comment       0x00000000       0x70 pins.o
-                                 0x71 (size before relaxing)
- .comment       0x00000000       0x71 routines.o
- .comment       0x00000000       0x71 main.o
- .comment       0x00000000       0x71 bmptk_cortex.o
- .comment       0x00000000       0x71 bmptk_interface.o

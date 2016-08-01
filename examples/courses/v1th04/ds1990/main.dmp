@@ -1,0 +1,99 @@
+
+main.elf:     file format elf32-littlearm
+main.elf
+architecture: arm, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00000431
+
+Program Header:
+    LOAD off    0x00008000 vaddr 0x00000000 paddr 0x00000000 align 2**15
+         filesz 0x000004ec memsz 0x000004ec flags r-x
+    LOAD off    0x00010000 vaddr 0x10000000 paddr 0x10000000 align 2**15
+         filesz 0x00000000 memsz 0x00000408 flags rw-
+private flags = 5000002: [Version5 EABI] [has entry point]
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000004ec  00000000  00000000  00008000  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000004  10000000  10000000  00010000  2**2
+                  ALLOC
+  2 .stack        00000404  10000004  10000004  00010000  2**0
+                  ALLOC
+  3 .debug_frame  00000020  00000000  00000000  000084ec  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .comment      00000070  00000000  00000000  0000850c  2**0
+                  CONTENTS, READONLY
+  5 .ARM.attributes 00000031  00000000  00000000  0000857c  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+10000000 l    d  .bss	00000000 .bss
+10000004 l    d  .stack	00000000 .stack
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .ARM.attributes	00000000 .ARM.attributes
+00000000 l    df *ABS*	00000000 bmptk_cortex.c
+00000000 l    df *ABS*	00000000 pins.c
+00000000 l    df *ABS*	00000000 sw-uart.c
+00000000 l    df *ABS*	00000000 timer.c
+00000000 l    df *ABS*	00000000 main.c
+00000000 l    df *ABS*	00000000 _divsi3.o
+00000000 l    df *ABS*	00000000 
+10000000 l       .text	00000000 __ram_start
+10001000 l       *ABS*	00000000 __ram_end
+000004ec l       .bss	00000000 __exidx_end
+000004ec l       .bss	00000000 __exidx_start
+00008000 l       *ABS*	00000000 __rom_end
+00000000 l       *ABS*	00000000 __process_stack_size
+00008000 l       *ABS*	00000000 __rom_size
+00000000 l       *UND*	00000000 if_you_see_this_you_are_using_free_or_delete
+10001000 l       *ABS*	00000000 __heap_end
+00001000 l       *ABS*	00000000 __ram_size
+10000408 l       .stack	00000000 __heap_start
+00000000 l       .text	00000000 __rom_start
+00000400 l       *ABS*	00000000 __main_stack_size
+00000088 g     F .text	00000050 pin_set
+00000214 g     F .text	0000000c now
+00000342 g     F .text	00000034 ds_receive_bit
+00000326 g     F .text	0000001c ds_send_byte
+10000000 g     O .bss	00000004 PIN_CONFIGURATION_ERROR
+000001b8 g     F .text	00000016 uart_put_int_hexadecimal_digit
+00000000 g       .text	00000000 __text_start
+00000268 g     F .text	00000014 ds_pin_get
+00000128 g     F .text	00000018 txd_high
+10000408 g       .stack	00000000 __process_stack_end
+00000310 g     F .text	00000016 ds_send_bit
+00000298 g     F .text	00000074 ds_present
+10000408 g       .stack	00000000 __process_stack_start
+000004ec g       *ABS*	00000000 __data_init_start
+10000408 g       .stack	00000000 __main_stack_end
+10000004 g       .bss	00000000 __bss_end
+10000008 g       .stack	00000000 __stack_start
+00000398 g     F .text	00000030 ds1990_id_print
+000001ec g     F .text	00000028 timer_init
+0000015c g     F .text	00000048 uart_put_char
+00000140 g     F .text	0000001c uart_init
+00000110 g     F .text	00000018 txd_low
+00000000 g     O .text	00000020 __vectors
+10000000 g       .text	00000000 __data_end
+00000430 g     F .text	00000054 __startup
+00000244 g     F .text	00000024 ds_pin_set
+000001ce g     F .text	0000001c uart_put_int_hexadecimal
+10000408 g       .stack	00000000 __stack_end
+000004ec g       .text	00000000 __text_end
+000000d8 g     F .text	00000038 pin_get
+00000020 g     F .text	00000034 pin_configure_as_input
+10000000 g       .bss	00000000 __bss_start
+000001a4 g     F .text	00000014 uart_put_string
+000003c8 g     F .text	00000068 main
+00000220 g     F .text	00000010 await
+10000008 g       .stack	00000000 __main_stack_start
+00000230 g     F .text	00000014 delay
+000004ec g       *ABS*	00000000 __data_init_end
+00000054 g     F .text	00000034 pin_configure_as_output
+0000027c g     F .text	00000018 ds_pin_pulse
+10000000 g       .text	00000000 __data_start
+00000376 g     F .text	00000022 ds_receive_byte
+
+

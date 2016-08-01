@@ -15,11 +15,12 @@ TARGET     := lpc1114fn28
 BMPTK      := ../../../..
 
 # Specify project files (other than $(PROJECT).cpp) (if any) 
-SOURCES    := sw-uart.c timer.c
-HEADERS    := sw-uart.h timer.h
+SOURCES    :=  pins.c  sw-uart.c timer.c servo.c
+HEADERS    :=  pins.h  sw-uart.h timer.h servo.h
 
 # Specify directories, other than the current, that contain sources
-SEARCH     := ../sw-uart ../timer
+
+SEARCH     := ../../../../library
 
 # The Makefile.inc does all the work
 include $(BMPTK)/Makefile.inc

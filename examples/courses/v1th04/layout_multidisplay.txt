@@ -1,0 +1,10 @@
+layout multi digit display
+
+1 = E = 0x01
+2 = D = 0x02
+3 = C = 0x04
+4 = G = 0x08
+5 = DP = 0x10
+7 = A = 0x20
+8 = B = 0x40
+10 = F = 0x80

@@ -1,0 +1,1 @@
+C:\Development\HBO\Year1\th04-jaar2\tools\lpc21isp_197\lpc21isp_hr.exe -control -term C:\Development\HBO\Year1\th04-jaar2\examples\courses\v1th04\practicum4\main.hex com4 38400 12000

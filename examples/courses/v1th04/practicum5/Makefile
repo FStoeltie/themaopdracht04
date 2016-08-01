@@ -1,0 +1,23 @@
+#############################################################################
+#
+# Project Makefile
+#
+# (c) Wouter van Ooijen (www.voti.nl) 2015
+#
+# This file is in the public domain.
+# 
+#############################################################################
+
+# Specify target chip or board or system
+TARGET     := lpc1114fn28
+
+# Specify the location of the bmptk library
+BMPTK      := ../../../..
+
+# Specify project files (other than $(PROJECT).cpp) (if any)
+SOURCES    :=  pins.c routines.c sw-uart.c timer.c servo.c 75HC595.c
+HEADERS    :=  pins.h routines.h sw-uart.h timer.h servo.h 75HC595.h
+
+SEARCH     := ../../../../library
+# The Makefile.inc does all the work
+include $(BMPTK)/Makefile.inc

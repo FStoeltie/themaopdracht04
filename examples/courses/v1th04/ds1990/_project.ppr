@@ -26,12 +26,24 @@ Project
 [Open project files]
 0=main.c
 1=Makefile
+2=..\..\..\..\library\servo.c
+3=..\..\..\..\library\pins.h
+4=..\..\..\..\library\pins.c
 [Selected Project Files]
 Main=
 Selected=main.c
 [main.c]
-TopLine=99
-Caret=17,5
+TopLine=33
+Caret=7,42
 [Makefile]
-TopLine=5
-Caret=68,21
+TopLine=1
+Caret=7,23
+[..\..\..\..\library\servo.c]
+TopLine=1
+Caret=21,2
+[..\..\..\..\library\pins.h]
+TopLine=7
+Caret=29,18
+[..\..\..\..\library\pins.c]
+TopLine=13
+Caret=7,44
