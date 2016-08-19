@@ -78,7 +78,7 @@ void week1()    {
                 for( i = 0; i < count_down; i++ ){ 
                 }
                 disable_others();
-                    pin_set(1, current_led, 1);
+                pin_set(1, current_led, 1);
                 for( i = 0; i < count_down; i++ ){
                 }
             }
