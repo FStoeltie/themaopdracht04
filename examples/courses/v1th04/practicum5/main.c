@@ -25,12 +25,15 @@
 #include "pins.h"
 #include "75HC595.h"
 int delay_time = 1000000;
-#define SECOND 1000000
+#define SECOND   1000000
+#define TIMER_DONE 0
+#define DIGIT_ONE 0x01
+#define DIGIT_TWO 0x02
 int active_test = 0x00;
 int active_test2;
 char rray[2] = {0x00, 0x00};
 char active_button = 0;
-char numbers[10] = {0x18, 0xBB, 0x94, 0x91, 0x33, 0x51, 0x50, 0x9B, 0x10, 0x11}; //0xFC
+char numbers[10] = {0x18, 0xBB, 0x94, 0x91, 0x33, 0x51, 0x50, 0x9B, 0x10, 0x11}; //7 segment dual digit display
 char read_one_key(int column, int row)  {
     if(row == 1)    {
         active_test = 0xE0;
@@ -40,17 +43,14 @@ char read_one_key(int column, int row)  {
     }
     else    if(row == 3)    {
         active_test = 0xB0;
-        //active_test = 0xD0;
     }
     else    if(row == 4)    {
         active_test = 0x10;
     }
-    //active_test = 0x00;
+
     rray[1] &= 0x0F;
     rray[1] |= active_test; 
-    //rray[1] = 0x00; 
     write_registers(rray, 2);
-    //delay(10);
     
     if(!pin_get(0, column + 3)) {
         return 1;
@@ -59,6 +59,7 @@ char read_one_key(int column, int row)  {
     
 }
 char keypad_read()  {
+    // No else if, because return is fine
     if(read_one_key(1, 1))  {
         return '1';
     }
@@ -97,17 +98,11 @@ char keypad_read()  {
     }
     return 0;
 }
-void set_timer(int number)    {
-    
-}
 int bomb_i = 0, bomb_j = 0;
 int c_countdown = 0;
 char old_not_set = 0;
 char setting_bomb = 0;
 void set_bomb(int time) {
-    uart_put_string("selected time is: ");
-    uart_put_int_decimal(time);
-    uart_put_string("\n");
     if(time > 99)   {
         time = 99;
     }
@@ -116,7 +111,7 @@ void set_bomb(int time) {
     bomb_i = number_1;
     bomb_j = number_2;
 }
-void time_tick()    {
+void bomb_tick()    {
     if(bomb_j == 0) {
         if(bomb_i == 0);
         else    {
@@ -128,114 +123,58 @@ void time_tick()    {
         --bomb_j;
     }
 }
-void set_digits(char digit01, char digit02)   {
-    int i = 0;
-    for(; i < 20; i++)  {
-        rray[1] = 0x01 | 0x60;
-        rray[0] = numbers[digit01];
-        write_registers(rray, 2);
-        delay(20);
+void set_digit(char digit)  {
+    
+    rray[1] = digit + 1 | 0x60;
+    int value;
+    if(digit == DIGIT_ONE)  {
+        value = bomb_j;
+    }   
+    else    {
+        value = bomb_i;
     }
-
+    rray[0] = numbers[value];
     
-    rray[1] = 0x02 | 0x60;
-    
-    
-    rray[0] = numbers[digit02];
     write_registers(rray, 2);
-    delay(10);
-}
-void set_digit(char digit, char value)  {
-        rray[1] = digit | 0x60;
-        rray[0] = numbers[value];
-        write_registers(rray, 2);
-
-}
-void beep(){
-    unsigned int next = 0;
-    unsigned int j = 0;
-    #define PERIOD 1000*1000/440
-    next = now();
-    //for( j = 0; j < 220; j++ ){   //duur van een piep 440 = 1 seconden piep         
-    next += ( PERIOD / 4.5 );  //toonhoogte     
-    //while( now() < next );    
-    
-    pin_set(0, 7, 1);
-    delay(600.13);
-    next += ( PERIOD / 4.5 );                   
-    //while( now() < next );      
-    
-    pin_set(0, 7, 0);
-    delay(600.13); 
-    //} 
 }
 void beep_swap(int beep_on){
-    //unsigned int next = 0;
-    //unsigned int j = 0;
-    //#define PERIOD 1000*1000/440
-    //next = now();
-    //for( j = 0; j < 220; j++ ){   //duur van een piep 440 = 1 seconden piep         
-    //next += ( PERIOD / 4.5 );  //toonhoogte     
-    //while( now() < next );    
-    
     pin_set(0, 7, beep_on);
-    //delay(600.13);
-    //} 
 }
-void count()    {
-    int timeslice_1 = 10; // display must swap every 10 ms
-    int timeslice_2 = 2;  // must vibrate beep sound every 2 ms
-    int update_frequency = timeslice_1 / timeslice_2;
 
-    int i = 0;
-    rray[1] = 0xFF;
-    bomb_i = 9;
+void count()    {    
+    bomb_i = 0;
     bomb_j = 9;
-    int wait_time = now() + delay_time;
-    unsigned int next = now();
-    unsigned int next_2 = next;
-    int swap_sound = 0;
-    #define PERIOD 1000*1000/440
-    int d_time = now() + 1000000;
-    int beep_on_time = now() + 1000000 /2;
-    int time = 490;
-    int display_time = 10000;
-    int beep_time_swap = time;
-    int current_beep_time = now();
+    int time = 350;
+
     int beep_is_on = 1;
-    int beep_last_update = now();
-    int swap_display_on_time = now() + display_time;
-    
+
     int current_digit = 0;
-    int current_digit_counter = now() + SECOND;
-    int key_presses = now() + SECOND / 5;
+
     int slowpoke = 2;
     int beep_is_off = 0;
-    int beep_is_off_timer = now() + SECOND / 5; 
+
     while(1)    {
-        // Every second, update the time that is send to the display (bomb_j, bomb_i)
-        if(now() > current_digit_counter)   {
-            current_digit_counter = now() + SECOND;
-            time_tick();
-        }
+        timer_count();
+        int test = 0;
+        test != test;
         // Update the display every 10 ms and swap the active lights
-        if(now() > swap_display_on_time) {
-            if(current_digit == 0x02)  {
-                current_digit = 0x01;
-                set_digit(current_digit, bomb_i);
-            }
-            else {
-                current_digit = 0x02;
-                set_digit(current_digit, bomb_j);
-            }
-            
-            swap_display_on_time = now() + display_time;
+        if(get_timer(0) == TIMER_DONE)   {
+            ++current_digit;
+            current_digit = current_digit % 2;
+            set_digit(current_digit);
+            timer_activate(0, 10000);
+        }
+        // Every second, update the time that is send to the display (bomb_j, bomb_i)
+        if(get_timer(1) == TIMER_DONE)   {
+            //uart_put_string("putting stuff here\n");
+            timer_activate(1, SECOND);
+            bomb_tick();
         }
         if(bomb_i > 0)    {
             // Beep on frequency
-            if(now() > beep_on_time) {
-                if(current_beep_time < now())   {
-                    current_beep_time += (time + (1000 - 1000 / (bomb_i * 10 + bomb_j)));
+            if(get_timer(2) == TIMER_DONE) {
+                if(get_timer(3) == TIMER_DONE)   {
+                    timer_activate(3, (time + (1000 - 1000 / (bomb_i * 10 + bomb_j))));
                     if(beep_is_on == 0) {
                         beep_is_on = 1;
                     }  
@@ -247,8 +186,8 @@ void count()    {
         } else if(bomb_j > 0) {
             slowpoke = 5;
             // Beep on frequency
-            if(now() > beep_is_off_timer) {
-                beep_is_off_timer = now() + SECOND / (10 - (bomb_j / 2));
+            if(get_timer(4) == TIMER_DONE) {
+                timer_activate(4, SECOND / (15 - (bomb_j / 2)));
                 if(beep_is_off == 0)   {
                     beep_is_off = 1;
                 }
@@ -258,9 +197,8 @@ void count()    {
                 }
             }
             if(beep_is_off == 0) {
-                //if(now() > beep_on_time) {
-                if(current_beep_time < now())   {
-                    current_beep_time += (time + (1000 - 1000 / (bomb_i * 10 + bomb_j)));
+                if(get_timer(3) == TIMER_DONE)   {
+                    timer_activate(3, (time + (500 - 500 / (bomb_i * 10 + bomb_j))));
                     if(beep_is_on == 0) {
                         beep_is_on = 1;
                     }  
@@ -268,20 +206,18 @@ void count()    {
                         beep_is_on = 0;    
                 }
                 beep_swap(beep_is_on);
-            //}
             }
-            
         }
 
         // Turn beeping sound on for half a second every second
-        if(now() > d_time)    {
-            d_time = now() + 1000000;
-            beep_on_time = now() + 1000000 /slowpoke;
+        if(get_timer(5) == TIMER_DONE)  {
+            timer_activate(5, SECOND);
+            timer_activate(2, 1000000 /slowpoke);
         }
-        if(now() > key_presses) {
-            
+        if(get_timer(6) == TIMER_DONE) {
             active_test = 0x60;
             char old_active_button = active_button;
+            
             // Read * on keypad only, otherwise it will cost too much performance and lights will not blink properly!
             if(read_one_key(1, 4))  {
                 setting_bomb = 1;
@@ -294,130 +230,20 @@ void count()    {
                     c_countdown = 0;
                 }
                 else if(active_button != old_active_button)  {   // new button pressed
-                   // uart_put_string("key pressed: ");
                     if(active_button >= '0' && active_button <= '9')
                     if(old_not_set == 1) {
                         c_countdown = active_button - 48;
-                        //uart_put_int_decimal(c_countdown);
                         old_not_set = 0;
                     }
                     else {
                         c_countdown *= 10;
                         c_countdown += active_button - 48;
-                        //uart_put_int_decimal(c_countdown);
-                    }
-                    
-                   // uart_put_string("\n");
+                    } 
                 }
-            }  
-            key_presses = now() + SECOND / 5; 
+            } 
+            timer_activate(6, SECOND / 5); 
         }
-        
-            //set_digits(bomb_i, bomb_j);
-    
-        
-        //delay(100000);
-        /*int beep_time = delay_time / 2; // half a second
-
-        if(now() > next)    {
-            next = now();
-            next += ( PERIOD / time_slice_2 );
-            //always do timeslice_2
-            if(update_frequency >= timeslice_1) {
-                update_frequency -= timeslice_1;
-            }
-            
-        }*/
-        /*while(now() < next)    {
-            pin_set(0, 7, swap_sound); 
-        }
-        
-        {
-            if(swap_sound == 1)
-                swap_sound = 0;
-            else
-                swap_sound = 1;
-            #define PERIOD 1000*1000/440
- 
-        }
-        if(now() > wait_time)    {
-            bomb_time();
-            
-            wait_time = now() + delay_time;
-        }
-            active_test = 0x60;
-            char old_active_button = active_button;
-            active_button = keypad_read();
-            
-            if(active_button == '*')    {
-                setting_bomb = 1;         
-            }        
-            else if(setting_bomb) {
-                if(active_button == '#')    {
-                    setting_bomb = 0;
-                    set_bomb(c_countdown);
-                    c_countdown = 0;
-                }
-                else if(active_button != old_active_button)  {   // new button pressed
-                    uart_put_string("key pressed: ");
-                    if(active_button >= '0' && active_button <= '9')
-                    if(old_not_set == 1) {
-                        c_countdown = active_button - 48;
-                        uart_put_int_decimal(c_countdown);
-                        old_not_set = 0;
-                    }
-                    else {
-                        c_countdown *= 10;
-                        c_countdown += active_button - 48;
-                        uart_put_int_decimal(c_countdown);
-                    }
-                    
-                    uart_put_string("\n");
-                }
-            }   
-            set_digits(bomb_i, bomb_j);
-    }*/
-
-/*        if(bomb_i == 0 && bomb_j == 0)   {
-            uart_put_string("boom");
-            
-            beep2();
-        }
-        else    {
-            beep();
-        }
-*/
     }
-    //delay(10000);
-    bomb_j = 9;
-}
-
-
-void beep2(){
-    unsigned int next = 0;
-    unsigned int j = 0, i = 0;
-    #define PERIOD 1000*1000/440
-    for(i = 0; i < 6; i++){
-    next = now();
-    for( j = 0; j < 220; j++ ){   //duur van een piep 440 = 1 seconden piep         
-    next += ( PERIOD / 4.5 );  //toonhoogte     
-    while( now() < next );    
-    pin_set(0, 7, 1);
-
-    next += ( PERIOD / 4.5 );                   
-    while( now() < next );      
-    pin_set(0, 7, 0); 
-    } 
-    delay(100000);
-    }
-}
-
-
-void reading_matrix1()  {
-    pin_configure_as_input(0, 4);
-    pin_configure_as_input(0, 5);
-    pin_configure_as_input(0, 6);
-    
 }
 int delaytime = 5;
 void spi_test() {
@@ -427,9 +253,8 @@ void spi_test() {
     pin_configure_as_output(0, 7);
     pin_set(0, 7, 1);
     pin_set(0, 6, 0);
-    uart_put_string( "Starting programsdf...\n" );
+    uart_put_string( "Starting program...\n" );
     char rray[2] = {0x00, 0x00};
-    char numbers[10] = {0x18, 0xBB, 0x94, 0x91, 0x33, 0x51, 0x50, 0x9B, 0x10, 0x11}; //0xFC
     write_registers(rray, 2);
     for(;;) {
         count();

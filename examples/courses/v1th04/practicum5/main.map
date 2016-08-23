@@ -2,26 +2,6 @@ Archive member included because of file (symbol)
 
 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
                               sw-uart.o (__aeabi_idiv)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o)
-                              main.o (__aeabi_d2uiz)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(adddf3.o)
-                              main.o (__aeabi_dadd)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(subdf3.o)
-                              c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o) (__aeabi_dsub)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(fixdfsi.o)
-                              c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o) (__aeabi_d2iz)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(floatunsidf.o)
-                              main.o (__aeabi_ui2d)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
-                              c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o) (__aeabi_dcmpge)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_clzsi2.o)
-                              c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(adddf3.o) (__clzsi2)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(eqdf2.o)
-                              c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o) (__eqdf2)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(gedf2.o)
-                              c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o) (__gedf2)
-c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(ledf2.o)
-                              c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o) (__ledf2)
 
 Allocating common symbols
 Common symbol       size              file
@@ -48,10 +28,14 @@ Discarded input sections
  .text          0x00000000        0x0 sw-uart.o
  .data          0x00000000        0x0 sw-uart.o
  .bss           0x00000000        0x0 sw-uart.o
+ .text.uart_put_int_decimal
+                0x00000000       0x4c sw-uart.o
  .text.uart_put_int_hexadecimal_digit
                 0x00000000       0x16 sw-uart.o
  .text.uart_put_int_hexadecimal
                 0x00000000       0x1c sw-uart.o
+ .rodata.str1.1
+                0x00000000        0xc sw-uart.o
  .rodata.bmptk_version
                 0x00000000        0xe sw-uart.o
  .text          0x00000000        0x0 timer.o
@@ -76,17 +60,9 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text.set_timer
-                0x00000000        0x2 main.o
- .text.set_digits
-                0x00000000       0x4c main.o
- .text.beep     0x00000000       0x2c main.o
- .text.beep2    0x00000000       0x80 main.o
- .text.reading_matrix1
-                0x00000000       0x1c main.o
- .data.delay_time
-                0x00000000        0x4 main.o
  .data.delaytime
+                0x00000000        0x4 main.o
+ .data.delay_time
                 0x00000000        0x4 main.o
  .rodata.bmptk_version
                 0x00000000        0xe main.o
@@ -110,36 +86,6 @@ Discarded input sections
                 0x00000000        0x4 bmptk_interface.o
  .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
- .text          0x00000000       0x40 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o)
- .text          0x00000000      0x638 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(adddf3.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(adddf3.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(adddf3.o)
- .text          0x00000000      0x654 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(subdf3.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(subdf3.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(subdf3.o)
- .text          0x00000000       0x68 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(fixdfsi.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(fixdfsi.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(fixdfsi.o)
- .text          0x00000000       0x68 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(floatunsidf.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(floatunsidf.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(floatunsidf.o)
- .text          0x00000000       0x7c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
- .text          0x00000000       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_clzsi2.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_clzsi2.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_clzsi2.o)
- .text          0x00000000       0x94 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(eqdf2.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(eqdf2.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(eqdf2.o)
- .text          0x00000000       0xfc c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(gedf2.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(gedf2.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(gedf2.o)
- .text          0x00000000       0xfc c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(ledf2.o)
- .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(ledf2.o)
- .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(ledf2.o)
 
 Memory Configuration
 
@@ -182,7 +128,7 @@ END GROUP
                 [0x00001000]                PROVIDE (__ram_size, __ram_size)
                 [0x10001000]                PROVIDE (__ram_end, __ram_end)
 
-.text           0x00000000      0x89c
+.text           0x00000000      0x80c
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                __text_start = .
                 [0x00000000]                PROVIDE (__text_start, __text_start)
@@ -213,97 +159,100 @@ END GROUP
  .text.uart_put_string
                 0x00000170       0x14 sw-uart.o
                 0x00000170                uart_put_string
- .text.uart_put_int_decimal
-                0x00000184       0x4c sw-uart.o
-                0x00000184                uart_put_int_decimal
  .text.timer_init
-                0x000001d0       0x28 timer.o
-                0x000001d0                timer_init
- .text.now      0x000001f8        0xc timer.o
-                0x000001f8                now
- .text.await    0x00000204       0x10 timer.o
-                0x00000204                await
- .text.delay    0x00000214       0x14 timer.o
-                0x00000214                delay
+                0x00000184       0x28 timer.o
+                0x00000184                timer_init
+ .text.now      0x000001ac        0xc timer.o
+                0x000001ac                now
+ .text.await    0x000001b8       0x10 timer.o
+                0x000001b8                await
+ .text.delay    0x000001c8       0x14 timer.o
+                0x000001c8                delay
+ .text.get_timer
+                0x000001dc       0x14 timer.o
+                0x000001dc                get_timer
+ .text.timer_activate
+                0x000001f0        0xc timer.o
+                0x000001f0                timer_activate
+ .text.timer_count
+                0x000001fc       0x38 timer.o
+                0x000001fc                timer_count
  .text.configure_pin_layout
-                0x00000228       0x38 75HC595.o
-                0x00000228                configure_pin_layout
+                0x00000234       0x38 75HC595.o
+                0x00000234                configure_pin_layout
  .text.write_registers
-                0x00000260       0x80 75HC595.o
-                0x00000260                write_registers
+                0x0000026c       0x80 75HC595.o
+                0x0000026c                write_registers
  .text.read_one_key
-                0x000002e0       0x50 main.o
-                0x000002e0                read_one_key
+                0x000002ec       0x50 main.o
+                0x000002ec                read_one_key
  .text.keypad_read
-                0x00000330       0xae main.o
-                0x00000330                keypad_read
- *fill*         0x000003de        0x2 
+                0x0000033c       0xae main.o
+                0x0000033c                keypad_read
+ *fill*         0x000003ea        0x2 
  .text.set_bomb
-                0x000003e0       0x48 main.o
-                0x000003e0                set_bomb
- .text.time_tick
-                0x00000428       0x28 main.o
-                0x00000428                time_tick
+                0x000003ec       0x2c main.o
+                0x000003ec                set_bomb
+ .text.bomb_tick
+                0x00000418       0x28 main.o
+                0x00000418                bomb_tick
  .text.set_digit
-                0x00000450       0x24 main.o
-                0x00000450                set_digit
+                0x00000440       0x38 main.o
+                0x00000440                set_digit
  .text.beep_swap
-                0x00000474        0xe main.o
-                0x00000474                beep_swap
- *fill*         0x00000482        0x2 
- .text.count    0x00000484      0x270 main.o
-                0x00000484                count
+                0x00000478        0xe main.o
+                0x00000478                beep_swap
+ *fill*         0x00000486        0x2 
+ .text.count    0x00000488      0x1fc main.o
+                0x00000488                count
  .text.spi_test
-                0x000006f4       0x50 main.o
-                0x000006f4                spi_test
+                0x00000684       0x50 main.o
+                0x00000684                spi_test
  .text.startup.main
-                0x00000744        0x6 main.o
-                0x00000744                main
- *fill*         0x0000074a        0x2 
+                0x000006d4        0x6 main.o
+                0x000006d4                main
+ *fill*         0x000006da        0x2 
  .text.__startup
-                0x0000074c       0x54 bmptk_cortex.o
-                0x0000074c                __startup
+                0x000006dc       0x54 bmptk_cortex.o
+                0x000006dc                __startup
  .text.__aeabi_idiv0
-                0x000007a0        0x4 bmptk_cortex.o
-                0x000007a0                __aeabi_idiv0
- .text          0x000007a4       0xc0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
-                0x000007a4                __divsi3
-                0x000007a4                __aeabi_idiv
-                0x00000850                __aeabi_idivmod
-                0x00000864                . = ALIGN (0x4)
+                0x00000730        0x4 bmptk_cortex.o
+                0x00000730                __aeabi_idiv0
+ .text          0x00000734       0xc0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
+                0x00000734                __divsi3
+                0x00000734                __aeabi_idiv
+                0x000007e0                __aeabi_idivmod
+                0x000007f4                . = ALIGN (0x4)
  *(.glue_7t .glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  .glue_7t       0x00000000        0x0 linker stubs
-                0x00000864                . = ALIGN (0x4)
+                0x000007f4                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.1
-                0x00000864        0xc sw-uart.o
- .rodata.str1.1
-                0x00000870       0x2b main.o
-                                 0x2d (size before relaxing)
-                0x0000089c                . = ALIGN (0x4)
- *fill*         0x0000089b        0x1 
+                0x000007f4       0x15 main.o
+                0x0000080c                . = ALIGN (0x4)
+ *fill*         0x00000809        0x3 
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000089c                . = ALIGN (0x4)
+                0x0000080c                . = ALIGN (0x4)
  *(.gcc_except_table)
-                0x0000089c                . = ALIGN (0x4)
+                0x0000080c                . = ALIGN (0x4)
  *(.eh_frame_hdr)
-                0x0000089c                . = ALIGN (0x4)
+                0x0000080c                . = ALIGN (0x4)
  *(.eh_frame)
-                0x0000089c                . = ALIGN (0x4)
-                0x0000089c                __text_end = .
-                [0x0000089c]                PROVIDE (__text_end, __text_end)
+                0x0000080c                . = ALIGN (0x4)
+                0x0000080c                __text_end = .
+                [0x0000080c]                PROVIDE (__text_end, __text_end)
 
-.vfp11_veneer   0x0000089c        0x0
+.vfp11_veneer   0x0000080c        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0000089c        0x0
+.v4_bx          0x0000080c        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0000089c        0x0
+.iplt           0x0000080c        0x0
  .iplt          0x00000000        0x0 pins.o
 
-.rel.dyn        0x0000089c        0x0
+.rel.dyn        0x0000080c        0x0
  .rel.iplt      0x00000000        0x0 pins.o
 
 .IF_YOU_SEE_THIS_YOU_HAVE_ONE_OR_MORE_GLOBAL_OBJECT_CONSTRUCTORS
@@ -311,20 +260,20 @@ END GROUP
  *(.preinit_array)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x0000089c                . = ALIGN (0x4)
-                0x0000089c                __exidx_start = .
-                [0x0000089c]                PROVIDE (__exidx_start, __exidx_start)
+                0x0000080c                . = ALIGN (0x4)
+                0x0000080c                __exidx_start = .
+                [0x0000080c]                PROVIDE (__exidx_start, __exidx_start)
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000089c                . = ALIGN (0x4)
-                0x0000089c                __exidx_end = .
-                [0x0000089c]                PROVIDE (__exidx_end, __exidx_end)
+                0x0000080c                . = ALIGN (0x4)
+                0x0000080c                __exidx_end = .
+                [0x0000080c]                PROVIDE (__exidx_end, __exidx_end)
 
-.data           0x10000000        0xc load address 0x0000089c
+.data           0x10000000        0xc load address 0x0000080c
                 0x10000000                . = ALIGN (0x4)
-                0x0000089c                __data_init_start = LOADADDR (.data)
-                [0x0000089c]                PROVIDE (__data_init_start, __data_init_start)
+                0x0000080c                __data_init_start = LOADADDR (.data)
+                [0x0000080c]                PROVIDE (__data_init_start, __data_init_start)
                 0x10000000                __data_start = .
                 [0x10000000]                PROVIDE (__data_start, __data_start)
                 0x10000000                . = ALIGN (0x4)
@@ -335,13 +284,13 @@ END GROUP
  *fill*         0x1000000a        0x2 
                 0x1000000c                __data_end = .
                 [0x1000000c]                PROVIDE (__data_end, __data_end)
-                0x0000089c                __data_init_end = LOADADDR (.data)
-                [0x0000089c]                PROVIDE (__data_init_end, __data_init_end)
+                0x0000080c                __data_init_end = LOADADDR (.data)
+                [0x0000080c]                PROVIDE (__data_init_end, __data_init_end)
 
-.igot.plt       0x1000000c        0x0 load address 0x000008a8
+.igot.plt       0x1000000c        0x0 load address 0x00000818
  .igot.plt      0x00000000        0x0 pins.o
 
-.bss            0x1000000c       0x30
+.bss            0x1000000c       0x5c
                 0x1000000c                . = ALIGN (0x4)
                 0x1000000c                __bss_start = .
                 [0x1000000c]                PROVIDE (__bss_start, __bss_start)
@@ -350,68 +299,72 @@ END GROUP
  .bss.PIN_CONFIGURATION_ERROR
                 0x1000000c        0x4 pins.o
                 0x1000000c                PIN_CONFIGURATION_ERROR
+ .bss.old_time.4650
+                0x10000010        0x4 timer.o
+ .bss.array_size
+                0x10000014       0x28 timer.o
+                0x10000014                array_size
  .bss.old_not_set
-                0x10000010        0x1 main.o
-                0x10000010                old_not_set
- *fill*         0x10000011        0x3 
- .bss.bomb_i    0x10000014        0x4 main.o
-                0x10000014                bomb_i
- .bss.bomb_j    0x10000018        0x4 main.o
-                0x10000018                bomb_j
+                0x1000003c        0x1 main.o
+                0x1000003c                old_not_set
+ *fill*         0x1000003d        0x3 
+ .bss.bomb_i    0x10000040        0x4 main.o
+                0x10000040                bomb_i
+ .bss.bomb_j    0x10000044        0x4 main.o
+                0x10000044                bomb_j
  .bss.c_countdown
-                0x1000001c        0x4 main.o
-                0x1000001c                c_countdown
- .bss.rray      0x10000020        0x2 main.o
-                0x10000020                rray
+                0x10000048        0x4 main.o
+                0x10000048                c_countdown
+ .bss.rray      0x1000004c        0x2 main.o
+                0x1000004c                rray
  .bss.active_button
-                0x10000022        0x1 main.o
-                0x10000022                active_button
- *fill*         0x10000023        0x1 
+                0x1000004e        0x1 main.o
+                0x1000004e                active_button
+ *fill*         0x1000004f        0x1 
  .bss.active_test
-                0x10000024        0x4 main.o
-                0x10000024                active_test
+                0x10000050        0x4 main.o
+                0x10000050                active_test
  .bss.setting_bomb
-                0x10000028        0x1 main.o
-                0x10000028                setting_bomb
-                0x1000002c                . = ALIGN (0x4)
- *fill*         0x10000029        0x3 
+                0x10000054        0x1 main.o
+                0x10000054                setting_bomb
+                0x10000058                . = ALIGN (0x4)
+ *fill*         0x10000055        0x3 
  *(COMMON)
- COMMON         0x1000002c       0x10 75HC595.o
-                0x1000002c                DS_pin
-                0x10000030                STCP_pin
-                0x10000034                SHCP_pin
-                0x10000038                port
-                0x1000003c                . = ALIGN (0x4)
-                0x1000003c                __bss_end = .
-                [0x1000003c]                PROVIDE (__bss_end, __bss_end)
+ COMMON         0x10000058       0x10 75HC595.o
+                0x10000058                DS_pin
+                0x1000005c                STCP_pin
+                0x10000060                SHCP_pin
+                0x10000064                port
+                0x10000068                . = ALIGN (0x4)
+                0x10000068                __bss_end = .
+                [0x10000068]                PROVIDE (__bss_end, __bss_end)
 
-.stack          0x1000003c      0x404
-                0x10000040                . = ALIGN (0x8)
- *fill*         0x1000003c        0x4 
-                0x10000040                __stack_start = .
-                [0x10000040]                PROVIDE (__stack_start, __stack_start)
-                0x10000040                . = ALIGN (0x8)
-                0x10000040                __main_stack_start = .
-                [0x10000040]                PROVIDE (__main_stack_start, __main_stack_start)
-                0x10000440                . = (. + __main_stack_size)
- *fill*         0x10000040      0x400 
-                0x10000440                . = ALIGN (0x8)
-                0x10000440                __main_stack_end = .
-                [0x10000440]                PROVIDE (__main_stack_end, __main_stack_end)
-                0x10000440                . = ALIGN (0x8)
-                0x10000440                __process_stack_start = .
-                [0x10000440]                PROVIDE (__process_stack_start, __process_stack_start)
-                0x10000440                . = (. + __process_stack_size)
-                0x10000440                . = ALIGN (0x8)
-                0x10000440                __process_stack_end = .
-                [0x10000440]                PROVIDE (__process_stack_end, __process_stack_end)
-                0x10000440                . = ALIGN (0x8)
-                0x10000440                __stack_end = .
-                [0x10000440]                PROVIDE (__stack_end, __stack_end)
-                0x10000440                . = ALIGN (0x4)
-                0x10000440                __heap_start = .
-                [0x10000440]                PROVIDE (__heap_start, __heap_start)
-                0x10000440                . = ALIGN (0x4)
+.stack          0x10000068      0x400
+                0x10000068                . = ALIGN (0x8)
+                0x10000068                __stack_start = .
+                [0x10000068]                PROVIDE (__stack_start, __stack_start)
+                0x10000068                . = ALIGN (0x8)
+                0x10000068                __main_stack_start = .
+                [0x10000068]                PROVIDE (__main_stack_start, __main_stack_start)
+                0x10000468                . = (. + __main_stack_size)
+ *fill*         0x10000068      0x400 
+                0x10000468                . = ALIGN (0x8)
+                0x10000468                __main_stack_end = .
+                [0x10000468]                PROVIDE (__main_stack_end, __main_stack_end)
+                0x10000468                . = ALIGN (0x8)
+                0x10000468                __process_stack_start = .
+                [0x10000468]                PROVIDE (__process_stack_start, __process_stack_start)
+                0x10000468                . = (. + __process_stack_size)
+                0x10000468                . = ALIGN (0x8)
+                0x10000468                __process_stack_end = .
+                [0x10000468]                PROVIDE (__process_stack_end, __process_stack_end)
+                0x10000468                . = ALIGN (0x8)
+                0x10000468                __stack_end = .
+                [0x10000468]                PROVIDE (__stack_end, __stack_end)
+                0x10000468                . = ALIGN (0x4)
+                0x10000468                __heap_start = .
+                [0x10000468]                PROVIDE (__heap_start, __heap_start)
+                0x10000468                . = ALIGN (0x4)
                 0x10001000                __heap_end = __ram_end
                 [0x10001000]                PROVIDE (__heap_end, __heap_end)
 
@@ -448,17 +401,9 @@ END GROUP
 .debug_line
  *(.debug_line)
 
-.debug_frame    0x00000000      0x1c8
+.debug_frame    0x00000000       0x20
  *(.debug_frame)
  .debug_frame   0x00000000       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
- .debug_frame   0x00000020       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o)
- .debug_frame   0x0000004c       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(adddf3.o)
- .debug_frame   0x00000088       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(subdf3.o)
- .debug_frame   0x000000c4       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(fixdfsi.o)
- .debug_frame   0x000000f0       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(floatunsidf.o)
- .debug_frame   0x00000118       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(eqdf2.o)
- .debug_frame   0x00000154       0x38 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(gedf2.o)
- .debug_frame   0x0000018c       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(ledf2.o)
 
 .comment        0x00000000       0x70
  .comment       0x00000000       0x70 pins.o
@@ -519,34 +464,14 @@ END GROUP
                 0x00000188       0x31 bmptk_interface.o
  .ARM.attributes
                 0x000001b9       0x1e c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_divsi3.o)
- .ARM.attributes
-                0x000001d7       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_fixunsdfsi.o)
- .ARM.attributes
-                0x00000203       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(adddf3.o)
- .ARM.attributes
-                0x0000022f       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(subdf3.o)
- .ARM.attributes
-                0x0000025b       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(fixdfsi.o)
- .ARM.attributes
-                0x00000287       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(floatunsidf.o)
- .ARM.attributes
-                0x000002b3       0x1e c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_arm_cmpdf2.o)
- .ARM.attributes
-                0x000002d1       0x1e c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(_clzsi2.o)
- .ARM.attributes
-                0x000002ef       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(eqdf2.o)
- .ARM.attributes
-                0x0000031b       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(gedf2.o)
- .ARM.attributes
-                0x00000347       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m\libgcc.a(ledf2.o)
 
 /DISCARD/
  *(.note.GNU-stack)
-                0x0000089c                PROVIDE (__text_size, (__text_end - __text_start))
+                0x0000080c                PROVIDE (__text_size, (__text_end - __text_start))
                 0x00000000                PROVIDE (__exidx_size, (__exidx_end - __exidx_start))
                 0x0000000c                PROVIDE (__data_size, (__data_end - __data_start))
                 0x00000000                PROVIDE (__data_init_size, (__data_init_end - __data_init_start))
-                0x00000030                PROVIDE (__bss_size, (__bss_end - __bss_start))
+                0x0000005c                PROVIDE (__bss_size, (__bss_end - __bss_start))
                 0x00000400                PROVIDE (__stack_size, (__stack_end - __stack_start))
-                0x00000bc0                PROVIDE (__heap_size, (__heap_end - __heap_start))
+                0x00000b98                PROVIDE (__heap_size, (__heap_end - __heap_start))
 OUTPUT(main.elf elf32-littlearm)
